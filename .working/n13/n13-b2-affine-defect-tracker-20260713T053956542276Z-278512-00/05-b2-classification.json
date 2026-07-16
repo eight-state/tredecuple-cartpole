@@ -1,0 +1,14 @@
+{
+  "classification": "N13_ONE_RUN_PASS",
+  "optimizer_calls": 0,
+  "physical_rollout_performed_by_parent": false,
+  "proof_child": {
+    "classification": "N13_ONE_RUN_PASS"
+  },
+  "retry_authorized": false,
+  "second_tracker_run_authorized": false,
+  "tracker_child": {
+    "classification": "N13_B2_CAPTURE_READY_FOR_COMPOSED_PROOF",
+    "selected_switch_tick": 5577
+  }
+}

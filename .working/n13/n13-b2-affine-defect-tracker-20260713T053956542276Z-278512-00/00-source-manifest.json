@@ -1,0 +1,87 @@
+{
+  "complete_local_import_closure": [
+    "src/cartpole_race/__init__.py",
+    "src/cartpole_race/dynamics.py",
+    "src/cartpole_race/env_spec.py",
+    "src/cartpole_race/lqr.py",
+    "src/cartpole_race/funnels.py",
+    "src/cartpole_race/tvlqr.py",
+    "scripts/fast_pieces.py",
+    "scripts/ilqg.py",
+    "scripts/robust_gains.py",
+    ".working/n13/n13_b2_affine_defect_tracker.py"
+  ],
+  "created_utc": "2026-07-13T05:39:56.566326+00:00",
+  "entrypoint": {
+    "path": ".working/n13/n13_b2_affine_defect_tracker.py",
+    "sha256": "1168aafa6ff6650ccd282f59b3a6705110b01c30f2bb67e0bbba8c765ac1dc1b"
+  },
+  "immutable_b0_arm_a_source": {
+    "actual_sha256": "6a78a3f2f3dd8f476b150194949f914b68a298237342293bd6d80d52ae33e84f",
+    "path": ".working/n13/n13-live-parent-bridge-20260713T031033509051Z-222644-00/arm-a.npz",
+    "required_sha256": "6a78a3f2f3dd8f476b150194949f914b68a298237342293bd6d80d52ae33e84f"
+  },
+  "immutable_base60_source": {
+    "actual_sha256": "7179a8f0bae0a40a895a68e17cc9c7b4c17a2287d201fedb1023b92b0e1726a2",
+    "path": "runs/r2/nom_n13_4ms_n13_base60r3.npz",
+    "required_sha256": "7179a8f0bae0a40a895a68e17cc9c7b4c17a2287d201fedb1023b92b0e1726a2"
+  },
+  "runtime_versions": {
+    "casadi": "3.7.2",
+    "numpy": "2.4.6",
+    "python": "3.12.10"
+  },
+  "schema": "n13-b2-source-manifest-v1",
+  "source_files": {
+    ".working/n13/n13_b2_affine_defect_tracker.py": {
+      "retained_expected_sha256": null,
+      "retained_hash_matches": null,
+      "sha256": "1168aafa6ff6650ccd282f59b3a6705110b01c30f2bb67e0bbba8c765ac1dc1b"
+    },
+    "scripts/fast_pieces.py": {
+      "retained_expected_sha256": "e49c94f4d763a89911fa6e55fd9a460f14748246c0096d49694429501e1e20a9",
+      "retained_hash_matches": true,
+      "sha256": "e49c94f4d763a89911fa6e55fd9a460f14748246c0096d49694429501e1e20a9"
+    },
+    "scripts/ilqg.py": {
+      "retained_expected_sha256": "94d3eca2cc2aa4d339fa19bd18421fefd6145fc6c99df161e05b6fe7d505253c",
+      "retained_hash_matches": true,
+      "sha256": "94d3eca2cc2aa4d339fa19bd18421fefd6145fc6c99df161e05b6fe7d505253c"
+    },
+    "scripts/robust_gains.py": {
+      "retained_expected_sha256": "a1b941344136def52c97ae970fcf3cc86993d6d335c1f1a85c6104bb00e240fc",
+      "retained_hash_matches": true,
+      "sha256": "a1b941344136def52c97ae970fcf3cc86993d6d335c1f1a85c6104bb00e240fc"
+    },
+    "src/cartpole_race/__init__.py": {
+      "retained_expected_sha256": null,
+      "retained_hash_matches": null,
+      "sha256": "92f02f32168d383b97f3bc2d853456427b14219a239609de480d5c400cc6b5a3"
+    },
+    "src/cartpole_race/dynamics.py": {
+      "retained_expected_sha256": "6c2109c60bbbb64edf7995765566d595b0790a62a7b43ebda233f889f17e7b46",
+      "retained_hash_matches": true,
+      "sha256": "6c2109c60bbbb64edf7995765566d595b0790a62a7b43ebda233f889f17e7b46"
+    },
+    "src/cartpole_race/env_spec.py": {
+      "retained_expected_sha256": "bb0a6b1c41403ee712b6ab0888c9b03486e327f0adba2a554bf072a989ce318d",
+      "retained_hash_matches": true,
+      "sha256": "bb0a6b1c41403ee712b6ab0888c9b03486e327f0adba2a554bf072a989ce318d"
+    },
+    "src/cartpole_race/funnels.py": {
+      "retained_expected_sha256": "187b9f0dbcd12a5a1cb268e00ba368fbab8dac0241431e4040f9ebf8e6a0bf7c",
+      "retained_hash_matches": true,
+      "sha256": "187b9f0dbcd12a5a1cb268e00ba368fbab8dac0241431e4040f9ebf8e6a0bf7c"
+    },
+    "src/cartpole_race/lqr.py": {
+      "retained_expected_sha256": "76444997b66d7074ac4709407e04152e8631f2063555f358a716426c201813fd",
+      "retained_hash_matches": true,
+      "sha256": "76444997b66d7074ac4709407e04152e8631f2063555f358a716426c201813fd"
+    },
+    "src/cartpole_race/tvlqr.py": {
+      "retained_expected_sha256": null,
+      "retained_hash_matches": null,
+      "sha256": "dd9574e4175439ba38b349617d8db1205745f1a2384312594bf4c7f04e1aec84"
+    }
+  }
+}

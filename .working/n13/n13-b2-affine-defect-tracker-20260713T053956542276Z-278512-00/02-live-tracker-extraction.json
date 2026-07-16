@@ -1,0 +1,32 @@
+{
+  "applied_peak_n": 39.83765056127226,
+  "applied_replay_state_max_abs_delta": 0.0,
+  "cart_peak_node_m": 6.900186930927419,
+  "classification": "N13_B2_TRACKER_EXTRACTION_PASS",
+  "exception": null,
+  "first_causal_failure": null,
+  "gates": {
+    "applied_replay_controls_byte_identical": true,
+    "applied_replay_exact_shape": true,
+    "applied_replay_exact_time_grid": true,
+    "applied_replay_state_match_le_1e-12": true,
+    "exact_hanging_start": true,
+    "exact_shape": true,
+    "exact_time_grid": true,
+    "finite": true,
+    "node_cart_le_10_m": true,
+    "quarter_cart_le_10_m": true,
+    "raw_equals_applied": true,
+    "raw_peak_le_150_n": true,
+    "rollout_exception_free": true
+  },
+  "live_states_are_only_candidate_evidence": true,
+  "passed": true,
+  "quarter_step_rail_audit": {
+    "cart_peak_m": 6.900188430319146,
+    "first_nonfinite": null,
+    "first_rail_violation": null
+  },
+  "raw_peak_n": 39.83765056127226,
+  "reference_states_are_not_candidate_evidence": true
+}

@@ -1,0 +1,214 @@
+{
+  "schema": "n13-proof-capsule-copy-manifest-v1",
+  "copied_file_count": 27,
+  "copied_total_bytes": 26320852,
+  "copy_scope": "manifest-declared local source closure plus required B0/B2 authority and evidence only",
+  "source_workspace": "C:/Users/verom/Downloads/fuckyacine/n9/workspace",
+  "archive_recovery": {
+    "status": "recovered",
+    "target": "src/cartpole_race/__init__.py",
+    "current_workspace_hash": "338d2ee651a473ae73e2a876a23783a92c1f128976d2047567392a1a65641cd9",
+    "manifest_required_hash": "92f02f32168d383b97f3bc2d853456427b14219a239609de480d5c400cc6b5a3",
+    "recovery_source": "C:/Users/verom/Downloads/fuckyacine/n9/workspace/.working/n12-ci-autocrlf-7f3b823-r3/src/cartpole_race/__init__.py"
+  },
+  "explicit_exclusions": [
+    "perturbation robustness",
+    "release seed gates",
+    "72/72",
+    "promotion",
+    "statistical robustness",
+    "hardware"
+  ],
+  "files": [
+    {
+      "path": "src/cartpole_race/__init__.py",
+      "sha256": "92f02f32168d383b97f3bc2d853456427b14219a239609de480d5c400cc6b5a3",
+      "bytes": 1238,
+      "category": "manifest_declared_source_closure",
+      "source_path": "C:/Users/verom/Downloads/fuckyacine/n9/workspace/.working/n12-ci-autocrlf-7f3b823-r3/src/cartpole_race/__init__.py",
+      "note": "Recovered from local archive because the current workspace path drifted from the B2 manifest hash."
+    },
+    {
+      "path": "src/cartpole_race/dynamics.py",
+      "sha256": "6c2109c60bbbb64edf7995765566d595b0790a62a7b43ebda233f889f17e7b46",
+      "bytes": 11940,
+      "category": "manifest_declared_source_closure",
+      "source_path": "C:/Users/verom/Downloads/fuckyacine/n9/workspace/src/cartpole_race/dynamics.py"
+    },
+    {
+      "path": "src/cartpole_race/env_spec.py",
+      "sha256": "bb0a6b1c41403ee712b6ab0888c9b03486e327f0adba2a554bf072a989ce318d",
+      "bytes": 5436,
+      "category": "manifest_declared_source_closure",
+      "source_path": "C:/Users/verom/Downloads/fuckyacine/n9/workspace/src/cartpole_race/env_spec.py"
+    },
+    {
+      "path": "src/cartpole_race/lqr.py",
+      "sha256": "76444997b66d7074ac4709407e04152e8631f2063555f358a716426c201813fd",
+      "bytes": 4820,
+      "category": "manifest_declared_source_closure",
+      "source_path": "C:/Users/verom/Downloads/fuckyacine/n9/workspace/src/cartpole_race/lqr.py"
+    },
+    {
+      "path": "src/cartpole_race/funnels.py",
+      "sha256": "187b9f0dbcd12a5a1cb268e00ba368fbab8dac0241431e4040f9ebf8e6a0bf7c",
+      "bytes": 13059,
+      "category": "manifest_declared_source_closure",
+      "source_path": "C:/Users/verom/Downloads/fuckyacine/n9/workspace/src/cartpole_race/funnels.py"
+    },
+    {
+      "path": "src/cartpole_race/tvlqr.py",
+      "sha256": "dd9574e4175439ba38b349617d8db1205745f1a2384312594bf4c7f04e1aec84",
+      "bytes": 8491,
+      "category": "manifest_declared_source_closure",
+      "source_path": "C:/Users/verom/Downloads/fuckyacine/n9/workspace/src/cartpole_race/tvlqr.py"
+    },
+    {
+      "path": "scripts/fast_pieces.py",
+      "sha256": "e49c94f4d763a89911fa6e55fd9a460f14748246c0096d49694429501e1e20a9",
+      "bytes": 5968,
+      "category": "manifest_declared_source_closure",
+      "source_path": "C:/Users/verom/Downloads/fuckyacine/n9/workspace/scripts/fast_pieces.py"
+    },
+    {
+      "path": "scripts/ilqg.py",
+      "sha256": "94d3eca2cc2aa4d339fa19bd18421fefd6145fc6c99df161e05b6fe7d505253c",
+      "bytes": 17816,
+      "category": "manifest_declared_source_closure",
+      "source_path": "C:/Users/verom/Downloads/fuckyacine/n9/workspace/scripts/ilqg.py"
+    },
+    {
+      "path": "scripts/robust_gains.py",
+      "sha256": "a1b941344136def52c97ae970fcf3cc86993d6d335c1f1a85c6104bb00e240fc",
+      "bytes": 5353,
+      "category": "manifest_declared_source_closure",
+      "source_path": "C:/Users/verom/Downloads/fuckyacine/n9/workspace/scripts/robust_gains.py"
+    },
+    {
+      "path": ".working/n13/n13_b2_affine_defect_tracker.py",
+      "sha256": "1168aafa6ff6650ccd282f59b3a6705110b01c30f2bb67e0bbba8c765ac1dc1b",
+      "bytes": 74717,
+      "category": "manifest_declared_source_closure",
+      "source_path": "C:/Users/verom/Downloads/fuckyacine/n9/workspace/.working/n13/n13_b2_affine_defect_tracker.py"
+    },
+    {
+      "path": "runs/r2/nom_n13_4ms_n13_base60r3.npz",
+      "sha256": "7179a8f0bae0a40a895a68e17cc9c7b4c17a2287d201fedb1023b92b0e1726a2",
+      "bytes": 581714,
+      "category": "B0_authority",
+      "source_path": "C:/Users/verom/Downloads/fuckyacine/n9/workspace/runs/r2/nom_n13_4ms_n13_base60r3.npz"
+    },
+    {
+      "path": ".working/n13/n13-live-parent-bridge-20260713T031033509051Z-222644-00/arm-a.npz",
+      "sha256": "6a78a3f2f3dd8f476b150194949f914b68a298237342293bd6d80d52ae33e84f",
+      "bytes": 2491193,
+      "category": "B0_authority",
+      "source_path": "C:/Users/verom/Downloads/fuckyacine/n9/workspace/.working/n13/n13-live-parent-bridge-20260713T031033509051Z-222644-00/arm-a.npz"
+    },
+    {
+      "path": ".working/n13/n13-b2-affine-defect-tracker-20260713T053956542276Z-278512-00/00-source-manifest.json",
+      "sha256": "7fa49e01813d9e54488d50e3d1f4d4adfd2cc62ec8d3b8d556c9b88c2b25cdee",
+      "bytes": 3911,
+      "category": "B2_bundle_evidence",
+      "source_path": "C:/Users/verom/Downloads/fuckyacine/n9/workspace/.working/n13/n13-b2-affine-defect-tracker-20260713T053956542276Z-278512-00/00-source-manifest.json"
+    },
+    {
+      "path": ".working/n13/n13-b2-affine-defect-tracker-20260713T053956542276Z-278512-00/01-affine-controller.json",
+      "sha256": "357db48d2eddde0cef5ed00a0044fecdf58fb03c7a9a155a36e29383cb813a81",
+      "bytes": 4394,
+      "category": "B2_bundle_evidence",
+      "source_path": "C:/Users/verom/Downloads/fuckyacine/n9/workspace/.working/n13/n13-b2-affine-defect-tracker-20260713T053956542276Z-278512-00/01-affine-controller.json"
+    },
+    {
+      "path": ".working/n13/n13-b2-affine-defect-tracker-20260713T053956542276Z-278512-00/01-affine-controller.npz",
+      "sha256": "7d57677e6858113d908334e19b37b6286341129e5f8f8f9e93bb36653fbdefb8",
+      "bytes": 9135536,
+      "category": "B2_bundle_evidence",
+      "source_path": "C:/Users/verom/Downloads/fuckyacine/n9/workspace/.working/n13/n13-b2-affine-defect-tracker-20260713T053956542276Z-278512-00/01-affine-controller.npz"
+    },
+    {
+      "path": ".working/n13/n13-b2-affine-defect-tracker-20260713T053956542276Z-278512-00/02-live-tracker-extraction.json",
+      "sha256": "bde2a33638103dbdf340bf8270842a334654df98068110a303a1e2d66e5161b5",
+      "bytes": 1035,
+      "category": "B2_bundle_evidence",
+      "source_path": "C:/Users/verom/Downloads/fuckyacine/n9/workspace/.working/n13/n13-b2-affine-defect-tracker-20260713T053956542276Z-278512-00/02-live-tracker-extraction.json"
+    },
+    {
+      "path": ".working/n13/n13-b2-affine-defect-tracker-20260713T053956542276Z-278512-00/02-live-tracker-extraction.npz",
+      "sha256": "8fd7f559fa48dd708f08f3b0bcc42567b8ad4dbed58e2504060a1200aa294c1a",
+      "bytes": 4882206,
+      "category": "B2_bundle_evidence",
+      "source_path": "C:/Users/verom/Downloads/fuckyacine/n9/workspace/.working/n13/n13-b2-affine-defect-tracker-20260713T053956542276Z-278512-00/02-live-tracker-extraction.npz"
+    },
+    {
+      "path": ".working/n13/n13-b2-affine-defect-tracker-20260713T053956542276Z-278512-00/03-static-capture-scan.json",
+      "sha256": "f675a6702a910537b98790bee3d97cd5425b6b1414328131d263bb3909113d71",
+      "bytes": 1814,
+      "category": "B2_bundle_evidence",
+      "source_path": "C:/Users/verom/Downloads/fuckyacine/n9/workspace/.working/n13/n13-b2-affine-defect-tracker-20260713T053956542276Z-278512-00/03-static-capture-scan.json"
+    },
+    {
+      "path": ".working/n13/n13-b2-affine-defect-tracker-20260713T053956542276Z-278512-00/03-static-capture-scan.npz",
+      "sha256": "d4c74f96e3b4119a53b1fd71a84e70552b99151052bb13d8a9e1aa61b431083a",
+      "bytes": 2977874,
+      "category": "B2_bundle_evidence",
+      "source_path": "C:/Users/verom/Downloads/fuckyacine/n9/workspace/.working/n13/n13-b2-affine-defect-tracker-20260713T053956542276Z-278512-00/03-static-capture-scan.npz"
+    },
+    {
+      "path": ".working/n13/n13-b2-affine-defect-tracker-20260713T053956542276Z-278512-00/04-fresh-composed-proof.json",
+      "sha256": "8ec53c9af29500230d8baba4ee78c6a92deaa887909261df13e8245264382dd8",
+      "bytes": 1066,
+      "category": "B2_bundle_evidence",
+      "source_path": "C:/Users/verom/Downloads/fuckyacine/n9/workspace/.working/n13/n13-b2-affine-defect-tracker-20260713T053956542276Z-278512-00/04-fresh-composed-proof.json"
+    },
+    {
+      "path": ".working/n13/n13-b2-affine-defect-tracker-20260713T053956542276Z-278512-00/04-fresh-composed-proof.npz",
+      "sha256": "fffb9466ee0be82646867ed6c8f13748827a2d157144eb0c81cfe642fc0a005b",
+      "bytes": 6047944,
+      "category": "B2_bundle_evidence",
+      "source_path": "C:/Users/verom/Downloads/fuckyacine/n9/workspace/.working/n13/n13-b2-affine-defect-tracker-20260713T053956542276Z-278512-00/04-fresh-composed-proof.npz"
+    },
+    {
+      "path": ".working/n13/n13-b2-affine-defect-tracker-20260713T053956542276Z-278512-00/05-b2-classification.json",
+      "sha256": "a93eb44febdff72e12793a6b62ed122300b42b3aa669602c731ad0e5b45d4c3b",
+      "bytes": 390,
+      "category": "B2_bundle_evidence",
+      "source_path": "C:/Users/verom/Downloads/fuckyacine/n9/workspace/.working/n13/n13-b2-affine-defect-tracker-20260713T053956542276Z-278512-00/05-b2-classification.json"
+    },
+    {
+      "path": ".working/n13/n13-b2-affine-defect-tracker-20260713T053956542276Z-278512-00/05-b2-classification.npz",
+      "sha256": "ff79b5a8e46a0e3b621b2e804f2e54d1ad5dff80206876b1f84a5aff3dc461b0",
+      "bytes": 302,
+      "category": "B2_bundle_evidence",
+      "source_path": "C:/Users/verom/Downloads/fuckyacine/n9/workspace/.working/n13/n13-b2-affine-defect-tracker-20260713T053956542276Z-278512-00/05-b2-classification.npz"
+    },
+    {
+      "path": ".working/n13-retrospective/b2-proof-verify.py",
+      "sha256": "9cada194b63f13b576fc6b8906bb7e315cd604e73fbb3a022147de461f022a13",
+      "bytes": 27548,
+      "category": "independent_verifier",
+      "source_path": "C:/Users/verom/Downloads/fuckyacine/n9/workspace/.working/n13-retrospective/b2-proof-verify.py"
+    },
+    {
+      "path": ".working/n13-retrospective/b2-proof-verification-result.json",
+      "sha256": "7688cc3b1f75e6aa2c3903f9d0e9d3a96799ec6b7775e19ec2d210703d54a6e9",
+      "bytes": 7842,
+      "category": "independent_verification_result",
+      "source_path": "C:/Users/verom/Downloads/fuckyacine/n9/workspace/.working/n13-retrospective/b2-proof-verification-result.json"
+    },
+    {
+      "path": ".working/n13-retrospective/b2-proof-verification.md",
+      "sha256": "ed8f697e8e0956bc806a91dd24595477e21b54f623b86645436bf778c0c5e2ec",
+      "bytes": 4137,
+      "category": "independent_verification_report",
+      "source_path": "C:/Users/verom/Downloads/fuckyacine/n9/workspace/.working/n13-retrospective/b2-proof-verification.md"
+    },
+    {
+      "path": "evidence/problem-definition.md",
+      "sha256": "73a9fe0a253fc369b4f998f3024965c1e9de92cd9ae13fc38438e3d0ae2384ee",
+      "bytes": 3108,
+      "category": "problem_definition",
+      "source_path": "C:/Users/verom/Downloads/fuckyacine/n9/workspace/.working/n13/definition.md"
+    }
+  ]
+}
