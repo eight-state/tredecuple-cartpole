@@ -1,0 +1,61 @@
+{
+  "classification": "N13_B2_CAPTURE_READY_FOR_COMPOSED_PROOF",
+  "eligible_ticks": [
+    5577
+  ],
+  "ordered_live_state_scan": true,
+  "selected_hold": {
+    "applied_peak_n": 38.10396084189415,
+    "cart_peak_node_m": 0.6467318637216906,
+    "exception": null,
+    "gates": {
+      "exact_12_second_shape": true,
+      "exact_time_grid": true,
+      "finite": true,
+      "node_cart_le_10_m": true,
+      "quarter_cart_le_10_m": true,
+      "raw_equals_applied": true,
+      "raw_peak_le_150_n": true,
+      "trailing_in_set_ge_5_s": true
+    },
+    "passed": true,
+    "quarter_step_rail_audit": {
+      "cart_peak_m": 0.6467318637216906,
+      "first_nonfinite": null,
+      "first_rail_violation": null
+    },
+    "raw_peak_n": 38.10396084189415,
+    "trailing_success_s": 9.048,
+    "trailing_success_samples": 9049
+  },
+  "selected_switch_tick": 5577,
+  "static_law": "default-Q mpmath50 SDA K from 01-affine-controller.npz",
+  "tested_holds": [
+    {
+      "applied_peak_n": 38.10396084189415,
+      "cart_peak_node_m": 0.6467318637216906,
+      "exception": null,
+      "gates": {
+        "exact_12_second_shape": true,
+        "exact_time_grid": true,
+        "finite": true,
+        "node_cart_le_10_m": true,
+        "quarter_cart_le_10_m": true,
+        "raw_equals_applied": true,
+        "raw_peak_le_150_n": true,
+        "trailing_in_set_ge_5_s": true
+      },
+      "initial_static_raw_n": 38.10396084189415,
+      "passed": true,
+      "quarter_step_rail_audit": {
+        "cart_peak_m": 0.6467318637216906,
+        "first_nonfinite": null,
+        "first_rail_violation": null
+      },
+      "raw_peak_n": 38.10396084189415,
+      "tick": 5577,
+      "trailing_success_s": 9.048,
+      "trailing_success_samples": 9049
+    }
+  ]
+}

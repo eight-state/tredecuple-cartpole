@@ -1,4 +1,15 @@
 .venv/
-.working/
 __pycache__/
 *.py[cod]
+.pytest_cache/
+.ruff_cache/
+
+# Immutable provenance lives here; generated demo output does not.
+/.working/*
+!/.working/n13/
+!/.working/n13/**
+!/.working/n13-retrospective/
+!/.working/n13-retrospective/**
+/.working/**/__pycache__/
+/.working/**/*.py[cod]
+/.working/n13-demo.gif

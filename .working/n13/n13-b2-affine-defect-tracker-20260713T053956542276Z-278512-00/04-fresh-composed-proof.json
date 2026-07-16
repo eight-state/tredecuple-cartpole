@@ -1,0 +1,35 @@
+{
+  "applied_peak_n": 39.83765056127226,
+  "cart_peak_node_m": 6.900186930927419,
+  "classification": "N13_ONE_RUN_PASS",
+  "exception": null,
+  "gates": {
+    "exact_hanging_start": true,
+    "exact_shape": true,
+    "exact_time_grid": true,
+    "finite": true,
+    "node_cart_le_10_m": true,
+    "prefix_agrees_le_1e-12": true,
+    "quarter_cart_le_10_m": true,
+    "raw_equals_applied": true,
+    "raw_peak_le_150_n": true,
+    "rollout_exception_free": true,
+    "switch_in_instantaneous_success_set": true,
+    "trailing_in_set_ge_5_s": true
+  },
+  "only_this_artifact_can_authorize_n13_one_run_pass": true,
+  "passed": true,
+  "prefix_max_abs_delta": 0.0,
+  "quarter_step_rail_audit": {
+    "cart_peak_m": 6.900188430319146,
+    "first_nonfinite": null,
+    "first_rail_violation": null
+  },
+  "raw_peak_n": 39.83765056127226,
+  "stored_live_state_injected": false,
+  "switch_tick": 5577,
+  "switch_time_s": 5.577,
+  "tracker_policy_recomputed_live": true,
+  "trailing_success_s": 9.048,
+  "trailing_success_samples": 9049
+}

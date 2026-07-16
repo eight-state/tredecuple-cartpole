@@ -1,0 +1,14 @@
+* text=auto
+
+# Copied authority, evidence, and source closure must retain their recorded bytes.
+src/cartpole_race/** -text
+scripts/** -text
+.working/** -text
+runs/** -text
+evidence/problem-definition.md -text
+*.npz -text
+
+# Capsule code is maintained as LF text.
+src/n13_proof/** text eol=lf
+tests/** text eol=lf
+.github/** text eol=lf

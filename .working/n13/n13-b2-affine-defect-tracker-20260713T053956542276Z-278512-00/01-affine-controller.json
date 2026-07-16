@@ -1,0 +1,125 @@
+{
+  "affine_backward_recursion": {
+    "all_h_positive": true,
+    "feedback_contiguous_float64_sha256": "5014f3f3e4ad95988314a727dd632a7ba580a613dfc8815635ebd17039dd3921",
+    "feedback_shape": [
+      10000,
+      1,
+      28
+    ],
+    "feedforward_contiguous_float64_sha256": "59e31b6612b3fadf3f3a8d3f70704a4d2adbf89ea2056d6ad5b76b7b012e7d83",
+    "feedforward_shape": [
+      10000
+    ],
+    "h_max": 0.05346052549309267,
+    "h_min": 0.021671220146208075,
+    "initial_p_finite": true,
+    "initial_p_symmetric_max_abs_delta": 0.0,
+    "terminal_affine_value_p_is_zero": true,
+    "terminal_quadratic_value_is_default_sda_p": true
+  },
+  "classification": "N13_B2_AFFINE_CONTROLLER_CONSTRUCTED",
+  "controller_policy": "u_raw[k] = u_ref[k] - K[k] @ wrap_error(x[k], x_ref[k]) - kff[k]",
+  "default_sda": {
+    "authority_artifact": ".working/n13/n13-live-parent-bridge-20260713T031033509051Z-222644-00/arm-a.npz",
+    "authority_artifact_sha256": "6a78a3f2f3dd8f476b150194949f914b68a298237342293bd6d80d52ae33e84f",
+    "dps": 50,
+    "gates": {
+      "finite": true,
+      "k_hash": true,
+      "k_shape": true,
+      "p_hash": true,
+      "p_shape": true,
+      "q_shape": true,
+      "r_shape": true,
+      "runtime_p_numerically_matches_authority": true,
+      "stored_k_matches_runtime": true,
+      "tier_mpmath50": true
+    },
+    "info": {
+      "doubling_iters": 18,
+      "margin": 0.0004288525468186248,
+      "rho_cl": 0.9995711474531814,
+      "tier": "mpmath50"
+    },
+    "k_contiguous_float64_sha256": "522f6b9359051317dc19554792542a0db3e59ae61d4db5db092dc0e143a5fc86",
+    "p_contiguous_float64_sha256": "8a278912398a36e2fc03e201f6489358b8a1205ba1fce12aa82541eb78728dad",
+    "q_contiguous_float64_sha256": "4e9cbaf068fdce6a9dd8d21d9bda8b0a42a7482948d63dd90a544bb46511c878",
+    "r_contiguous_float64_sha256": "d144783f1ff33776a9fe135900a60ac1eec34eddb2204ec58faab157e66df454",
+    "runtime_p_contiguous_float64_sha256": "7c8839bf05690a61893d55ed455773b4baf69317a69a3ffdb3a1a8fe9bbbc6b7",
+    "runtime_p_vs_authority_max_abs_delta": 16.0
+  },
+  "exact_map": {
+    "a_contiguous_float64_sha256": "5536596ee12b8056c0b3190d23dbf35b7884b3ebbd45595328aa7207b2103901",
+    "a_shape": [
+      10000,
+      28,
+      28
+    ],
+    "b_contiguous_float64_sha256": "fc4e3f1e1a31ab101ef64df8e9621257a5ed08d82cb727efcbe18630b84ca2f7",
+    "b_shape": [
+      10000,
+      28,
+      1
+    ],
+    "bound_return": "(F, Fx, Fu, control_dt, n_sub, FxB, FuB)",
+    "builder": "ilqg.build_discrete_step(model)",
+    "control_dt_s": 0.001,
+    "fu_map_output_shape": [
+      28,
+      10000
+    ],
+    "fx_map_output_shape": [
+      28,
+      280000
+    ],
+    "raw_chart_equivalent_le_1e-12": true,
+    "raw_defect_contiguous_float64_sha256": "a23563dcffc82ace5eb72f64cdacbb49e6f03b461e03b54bec337342cad84603",
+    "raw_vs_wrapped_max_abs_delta": 2.220446049250313e-16,
+    "rk4_substeps_per_tick": 4,
+    "wrapped_defect_contiguous_float64_sha256": "91e0fb4273f2b0a04d4f26dfb80e551def32b4a796e20b54de3fd69e3f24a9de"
+  },
+  "manifest_sha256": "7fa49e01813d9e54488d50e3d1f4d4adfd2cc62ec8d3b8d556c9b88c2b25cdee",
+  "optimizer_calls": 0,
+  "reference": {
+    "base60_path": "runs/r2/nom_n13_4ms_n13_base60r3.npz",
+    "base60_sha256": "7179a8f0bae0a40a895a68e17cc9c7b4c17a2287d201fedb1023b92b0e1726a2",
+    "densifier": {
+      "builder": "make_densifier(model, 0.001, 4, 4, 2500)",
+      "dense_u_contiguous_float64_sha256": "17742729a54758c04838c4bc3092ee9c4d1ad1cb3e821161bfd116ac9b71e841",
+      "dense_u_shape": [
+        10000
+      ],
+      "dense_x_contiguous_float64_sha256": "e343b0e7bd4a012adbff345e41c8eaaeb0c63bc91a4f42509fcb388187f85d05",
+      "dense_x_shape": [
+        10001,
+        28
+      ],
+      "gates": {
+        "control_repeat_exact": true,
+        "exact_hanging_start": true,
+        "finite": true,
+        "u_native_float64": true,
+        "u_shape": true,
+        "x_native_float64": true,
+        "x_shape": true
+      }
+    },
+    "source_gates": {
+      "exact_hanging_start": true,
+      "finite": true,
+      "u_native_float64": true,
+      "u_shape": true,
+      "x_native_float64": true,
+      "x_shape": true
+    },
+    "source_keys": [
+      "force",
+      "horizon",
+      "n",
+      "n_nodes",
+      "u",
+      "x"
+    ]
+  }
+}
