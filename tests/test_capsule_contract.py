@@ -5,7 +5,11 @@ import json
 from pathlib import Path
 
 from n13_proof.capsule import EXCLUSIONS, project_root
-from n13_proof.verify import INDEPENDENT_VERIFIER_REL, INDEPENDENT_VERIFIER_SHA256
+from n13_proof.verify import (
+    INDEPENDENT_VERIFIER_REL,
+    INDEPENDENT_VERIFIER_SHA256,
+    portable_gate,
+)
 
 
 def sha256_file(path: Path) -> str:
@@ -49,3 +53,34 @@ def test_demo_loads_the_reference_but_never_the_saved_b2_rollout() -> None:
 def test_preserved_independent_verifier_is_byte_locked() -> None:
     path = project_root() / INDEPENDENT_VERIFIER_REL
     assert sha256_file(path) == INDEPENDENT_VERIFIER_SHA256
+
+
+def test_portable_gate_rejects_failures_outside_the_numeric_allowlist() -> None:
+    trace = {
+        "first_nonfinite": None,
+        "first_rail_violation": None,
+        "raw_equals_applied_byte_identical": True,
+        "raw_peak_abs_n": 40.0,
+        "node_cart_peak_m": 7.0,
+        "quarter_cart_peak_m": 7.0,
+    }
+    result = {
+        "failures": ["plant specification drift"],
+        "reference_authority": {
+            "dense_x_max_abs_delta": 1e-14,
+            "dense_u_max_abs_delta": 0.0,
+        },
+        "fresh_affine_live": trace,
+        "fresh_static_hold": trace,
+        "fresh_composed_proof": trace,
+        "artifact_composition": {"locked": True},
+        "time_grids": {"locked": True},
+        "switch_success": {
+            "in_success_set": True,
+            "trailing_success_samples": 9049,
+            "trailing_success_s": 9.048,
+        },
+    }
+    portable = portable_gate(result)
+    assert portable["verdict"] == "FAIL"
+    assert portable["unexpected_failures"] == ["plant specification drift"]

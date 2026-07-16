@@ -10,7 +10,7 @@ uv run n13-proof-verify
 
 `n13-demo` loads the frozen B0 nominal states and controls as its tracking reference, the Arm-A static gain, and the B2 affine controller. It computes each control from the current state, advances the native plant with four 0.25 ms RK4 steps per 1 kHz tick, and renders only the newly integrated states to `.working/n13-demo.gif`. The saved B2 proof rollout never supplies animation states.
 
-`n13-proof-verify` checks the SHA-256 of the separately preserved `.working/n13-retrospective/b2-proof-verify.py`, then runs that verifier. The verifier reconstructs the policy rollout and returns `PASS` before the command compares it with the bundle claim `N13_ONE_RUN_PASS`.
+`n13-proof-verify` checks the SHA-256 of the separately preserved `.working/n13-retrospective/b2-proof-verify.py`, then runs it unchanged. The command reports its host-specific byte verdict. A separate portable gate requires intact source closure, fresh finite closed-loop motion within the rail and force bound, the locked switch predicate, and 9.048 s trailing success. It does not claim byte-identical trajectories across numerical platforms.
 
 `evidence/copy-manifest.json` records all 27 copied inputs with source path, SHA-256, size, and category. The B2 source manifest locks the ten-file runtime closure. The capsule reports every authority input it loads.
 

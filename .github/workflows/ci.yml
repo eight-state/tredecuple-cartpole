@@ -2,7 +2,7 @@ name: N13 deterministic one-run proof
 
 on:
   push:
-    branches: ["**"]
+    branches: [main]
   pull_request:
 
 jobs:

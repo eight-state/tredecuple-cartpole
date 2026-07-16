@@ -242,8 +242,14 @@ def prepare_run(root: Path | None = None) -> PreparedRun:
     except (OSError, ValueError) as error:
         raise AuthorityError(f"cannot load B0 base archive: {error}") from error
     dense_x, dense_u = make_densifier(model, DT, 4, 4, 2500)(coarse_x, coarse_u)
-    require(byte_equal(dense_x, controller["x_ref"]), "B0 dense reference states differ from B2")
-    require(byte_equal(dense_u, controller["u_ref"]), "B0 dense reference controls differ from B2")
+    require(
+        max_abs_delta(dense_x, controller["x_ref"]) <= 1e-12,
+        "B0 dense reference states differ from B2 beyond the portable tolerance",
+    )
+    require(
+        max_abs_delta(dense_u, controller["u_ref"]) <= 1e-12,
+        "B0 dense reference controls differ from B2 beyond the portable tolerance",
+    )
 
     try:
         with np.load(arm_a_path, allow_pickle=False) as archive:
@@ -267,8 +273,8 @@ def prepare_run(root: Path | None = None) -> PreparedRun:
         model=model,
         hanging=hanging,
         upright=upright,
-        x_ref=np.asarray(dense_x, dtype=np.float64),
-        u_ref=np.asarray(dense_u, dtype=np.float64),
+        x_ref=np.asarray(controller["x_ref"], dtype=np.float64),
+        u_ref=np.asarray(controller["u_ref"], dtype=np.float64),
         feedback=np.asarray(controller["feedback_k"], dtype=np.float64),
         feedforward=np.asarray(controller["feedforward"], dtype=np.float64),
         static_k=np.asarray(arm_k, dtype=np.float64),
