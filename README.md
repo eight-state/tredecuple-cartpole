@@ -1,5 +1,7 @@
 # N13 deterministic one-run proof
 
+![N13 cart-pole swing-up and balance](docs/n13-demo.gif)
+
 This README limits scope to one deterministic, unperturbed N13 simulation from exact hanging through the locked handoff and success set (`deterministic_one_run_proof`).
 
 ```text
