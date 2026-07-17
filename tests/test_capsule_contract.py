@@ -65,6 +65,8 @@ def test_portable_gate_rejects_failures_outside_the_numeric_allowlist() -> None:
         "quarter_cart_peak_m": 7.0,
     }
     result = {
+        "verdict": "FAIL",
+        "_exit_code": 1,
         "failures": ["plant specification drift"],
         "reference_authority": {
             "dense_x_max_abs_delta": 1e-14,
@@ -81,6 +83,6 @@ def test_portable_gate_rejects_failures_outside_the_numeric_allowlist() -> None:
             "trailing_success_s": 9.048,
         },
     }
-    portable = portable_gate(result)
+    portable = portable_gate(result, {"passed": True})
     assert portable["verdict"] == "FAIL"
     assert portable["unexpected_failures"] == ["plant specification drift"]

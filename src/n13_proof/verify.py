@@ -12,7 +12,13 @@ from pathlib import Path
 from types import ModuleType
 from typing import Any
 
-from n13_proof.capsule import BUNDLE_REL, project_root, read_json, sha256_file
+from n13_proof.capsule import (
+    BUNDLE_REL,
+    project_root,
+    read_json,
+    sha256_file,
+    validate_b2_authority,
+)
 
 INDEPENDENT_VERIFIER_REL = Path(".working/n13-retrospective/b2-proof-verify.py")
 INDEPENDENT_VERIFIER_SHA256 = "9cada194b63f13b576fc6b8906bb7e315cd604e73fbb3a022147de461f022a13"
@@ -66,10 +72,31 @@ def run_independent_verifier(root: Path) -> dict[str, Any]:
     return result
 
 
-def portable_gate(independent: dict[str, Any]) -> dict[str, Any]:
-    """Evaluate source integrity and physical gates without cross-host byte claims."""
-    failures = set(independent.get("failures", []))
+def portable_gate(
+    independent: dict[str, Any], authority: dict[str, Any]
+) -> dict[str, Any]:
+    """Allow numerical drift only after fixed authority and result coherence pass."""
+    failure_values = independent.get("failures")
+    failures_well_formed = isinstance(failure_values, list) and all(
+        isinstance(value, str) for value in failure_values
+    )
+    failures = set(failure_values) if failures_well_formed else {"malformed failure list"}
     unexpected_failures = sorted(failures - PLATFORM_NUMERIC_FAILURES)
+
+    exact_byte_pass = (
+        failures_well_formed
+        and not failures
+        and independent.get("verdict") == "PASS"
+        and independent.get("_exit_code") == 0
+    )
+    numeric_drift_only = (
+        failures_well_formed
+        and bool(failures)
+        and not unexpected_failures
+        and independent.get("verdict") == "FAIL"
+        and independent.get("_exit_code") == 1
+    )
+    verifier_result_consistent = exact_byte_pass or numeric_drift_only
 
     reference = independent.get("reference_authority", {})
     reference_close = (
@@ -104,6 +131,8 @@ def portable_gate(independent: dict[str, Any]) -> dict[str, Any]:
     )
 
     checks = {
+        "fixed_b2_authority_passes": authority.get("passed") is True,
+        "preserved_verifier_result_is_consistent": verifier_result_consistent,
         "no_unexpected_preserved_verifier_failures": not unexpected_failures,
         "b0_reference_within_1e-12": reference_close,
         "fresh_closed_loop_traces_pass_physical_gates": all(trace_checks.values()),
@@ -113,6 +142,13 @@ def portable_gate(independent: dict[str, Any]) -> dict[str, Any]:
     }
     return {
         "verdict": "PASS" if all(checks.values()) else "FAIL",
+        "mode": (
+            "exact_byte_pass"
+            if all(checks.values()) and exact_byte_pass
+            else "numeric_drift_only"
+            if all(checks.values()) and numeric_drift_only
+            else "integrity_or_semantic_failure"
+        ),
         "checks": checks,
         "trace_checks": trace_checks,
         "unexpected_failures": unexpected_failures,
@@ -122,9 +158,10 @@ def portable_gate(independent: dict[str, Any]) -> dict[str, Any]:
 def main() -> int:
     root = project_root()
     try:
+        authority = validate_b2_authority(root)
         independent = run_independent_verifier(root)
         claimed = read_json(root / BUNDLE_REL / "05-b2-classification.json").get("classification")
-        portable = portable_gate(independent)
+        portable = portable_gate(independent, authority)
     except Exception as error:
         print(f"n13-proof-verify failed: {type(error).__name__}: {error}", file=sys.stderr)
         return 1
@@ -135,6 +172,7 @@ def main() -> int:
         "classification": "deterministic_one_run_proof",
         "bundle_claim": claimed,
         "bundle_claim_matches_N13_ONE_RUN_PASS": claim_matches,
+        "fixed_b2_authority": authority,
         "portable_closed_loop_witness": portable,
         "preserved_independent_verifier": {
             "path": INDEPENDENT_VERIFIER_REL.as_posix(),
