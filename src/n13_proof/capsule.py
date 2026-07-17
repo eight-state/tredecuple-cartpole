@@ -29,6 +29,47 @@ ARM_A_REL = Path(
     ".working/n13/n13-live-parent-bridge-20260713T031033509051Z-222644-00/arm-a.npz"
 )
 
+# Literal release authority. The historical B2 manifest remains evidence, not
+# the root that gets to redefine which source bytes are trusted.
+B2_SOURCE_SHA256 = {
+    ".working/n13/n13_b2_affine_defect_tracker.py": (
+        "1168aafa6ff6650ccd282f59b3a6705110b01c30f2bb67e0bbba8c765ac1dc1b"
+    ),
+    "scripts/fast_pieces.py": "e49c94f4d763a89911fa6e55fd9a460f14748246c0096d49694429501e1e20a9",
+    "scripts/ilqg.py": "94d3eca2cc2aa4d339fa19bd18421fefd6145fc6c99df161e05b6fe7d505253c",
+    "scripts/robust_gains.py": (
+        "a1b941344136def52c97ae970fcf3cc86993d6d335c1f1a85c6104bb00e240fc"
+    ),
+    "src/cartpole_race/__init__.py": (
+        "92f02f32168d383b97f3bc2d853456427b14219a239609de480d5c400cc6b5a3"
+    ),
+    "src/cartpole_race/dynamics.py": (
+        "6c2109c60bbbb64edf7995765566d595b0790a62a7b43ebda233f889f17e7b46"
+    ),
+    "src/cartpole_race/env_spec.py": (
+        "bb0a6b1c41403ee712b6ab0888c9b03486e327f0adba2a554bf072a989ce318d"
+    ),
+    "src/cartpole_race/funnels.py": (
+        "187b9f0dbcd12a5a1cb268e00ba368fbab8dac0241431e4040f9ebf8e6a0bf7c"
+    ),
+    "src/cartpole_race/lqr.py": "76444997b66d7074ac4709407e04152e8631f2063555f358a716426c201813fd",
+    "src/cartpole_race/tvlqr.py": (
+        "dd9574e4175439ba38b349617d8db1205745f1a2384312594bf4c7f04e1aec84"
+    ),
+}
+B2_FIXED_FILE_SHA256 = {
+    (BUNDLE_REL / "00-source-manifest.json").as_posix(): (
+        "7fa49e01813d9e54488d50e3d1f4d4adfd2cc62ec8d3b8d556c9b88c2b25cdee"
+    ),
+    (BUNDLE_REL / "01-affine-controller.npz").as_posix(): (
+        "7d57677e6858113d908334e19b37b6286341129e5f8f8f9e93bb36653fbdefb8"
+    ),
+}
+B2_CONTROLLER_PAYLOAD_SHA256 = {
+    "feedback_k": "5014f3f3e4ad95988314a727dd632a7ba580a613dfc8815635ebd17039dd3921",
+    "feedforward": "59e31b6612b3fadf3f3a8d3f70704a4d2adbf89ea2056d6ad5b76b7b012e7d83",
+}
+
 EXCLUSIONS = (
     "perturbation robustness",
     "release seed gates",
@@ -53,6 +94,57 @@ def sha256_file(path: Path) -> str:
         for block in iter(lambda: handle.read(1024 * 1024), b""):
             digest.update(block)
     return digest.hexdigest()
+
+
+def array_sha256(value: np.ndarray) -> str:
+    array = np.asarray(value)
+    require(array.dtype == np.dtype(np.float64), f"array is not float64: {array.dtype}")
+    return hashlib.sha256(np.ascontiguousarray(array).tobytes()).hexdigest()
+
+
+def validate_b2_authority(root: Path | None = None) -> dict[str, Any]:
+    """Fail closed unless the fixed B2 source and controller bytes are intact."""
+    root = project_root() if root is None else root.resolve()
+    expected_files = {**B2_SOURCE_SHA256, **B2_FIXED_FILE_SHA256}
+    file_checks: dict[str, dict[str, str | bool]] = {}
+    for relative, expected in expected_files.items():
+        path = root / relative
+        actual = sha256_file(path) if path.is_file() else "missing"
+        passed = actual == expected
+        file_checks[relative] = {"expected": expected, "actual": actual, "passed": passed}
+        require(passed, f"fixed B2 authority hash mismatch: {relative}")
+
+    manifest = read_json(root / BUNDLE_REL / "00-source-manifest.json")
+    sources = manifest.get("source_files")
+    require(isinstance(sources, dict), "B2 manifest source_files is absent")
+    require(set(sources) == set(B2_SOURCE_SHA256), "B2 manifest source set drift")
+    for relative, expected in B2_SOURCE_SHA256.items():
+        record = sources.get(relative)
+        require(isinstance(record, dict), f"B2 manifest source record drift: {relative}")
+        require(record.get("sha256") == expected, f"B2 manifest source hash drift: {relative}")
+
+    controller_path = root / BUNDLE_REL / "01-affine-controller.npz"
+    try:
+        with np.load(controller_path, allow_pickle=False) as archive:
+            payloads = {
+                name: np.asarray(archive[name]) for name in B2_CONTROLLER_PAYLOAD_SHA256
+            }
+    except (KeyError, OSError, ValueError) as error:
+        raise AuthorityError(f"cannot validate fixed B2 controller: {error}") from error
+
+    expected_shapes = {
+        "feedback_k": (TRACKER_TICKS, 1, NX),
+        "feedforward": (TRACKER_TICKS,),
+    }
+    payload_checks: dict[str, dict[str, str | bool]] = {}
+    for name, expected in B2_CONTROLLER_PAYLOAD_SHA256.items():
+        value = payloads[name]
+        actual = array_sha256(value)
+        passed = value.shape == expected_shapes[name] and np.all(np.isfinite(value)) and actual == expected
+        payload_checks[name] = {"expected": expected, "actual": actual, "passed": bool(passed)}
+        require(bool(passed), f"fixed B2 controller payload mismatch: {name}")
+
+    return {"passed": True, "files": file_checks, "controller_payloads": payload_checks}
 
 
 def byte_equal(left: np.ndarray, right: np.ndarray) -> bool:
@@ -143,6 +235,7 @@ def _load_npz(path: Path, expected_keys: set[str]) -> dict[str, np.ndarray]:
 def prepare_run(root: Path | None = None) -> PreparedRun:
     """Load and integrity-check only the B0/B2 inputs used by the demo."""
     root = project_root() if root is None else root.resolve()
+    validate_b2_authority(root)
     bundle = root / BUNDLE_REL
     manifest_path = bundle / "00-source-manifest.json"
     controller_path = bundle / "01-affine-controller.npz"
